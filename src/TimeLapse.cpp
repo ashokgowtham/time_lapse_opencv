@@ -22,7 +22,7 @@ int main( int argc, char** argv )
     int currentFileCount = 1;
     int outputVideoFps = 24;
     Mat frame;
-    bool writeVideo = true;
+    bool writeVideo = false;
 
     printf("Usage: <image|[video]> <timeInterval[1]> <outputFolder[\".\"]>\nRunning with defaults...\n");
 
@@ -51,7 +51,6 @@ int main( int argc, char** argv )
     namedWindow("preview", CV_WINDOW_AUTOSIZE);
     for(;;)
     {
-        printf("in loop\n");
         cap >> frame; // get a new frame from camera
         imshow("preview", frame);
         if (writeVideo)
@@ -62,6 +61,7 @@ int main( int argc, char** argv )
         {
             writeOutputImage(frame, outputFolder, currentFileCount++);
         }
+        if(waitKey(27) >= 0) break;
         sleep(timeInterval);
     }
     return 0;
