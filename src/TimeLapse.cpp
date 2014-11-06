@@ -24,7 +24,7 @@ int main( int argc, char** argv )
     Mat frame;
     bool writeVideo = false;
 
-    printf("Usage: <image|[video]> <timeInterval[1]> <outputFolder[\".\"]>\nRunning with defaults...\n");
+    printf("Usage: <[image]|video> <outputFolder[\".\"]> <timeInterval[1]>\nRunning with defaults...\n");
 
     if(argc>1) writeVideo = strcmp(argv[1],"video")==0;
     if(argc>2) outputFolder = argv[2];
