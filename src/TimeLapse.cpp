@@ -6,6 +6,7 @@
 
 char DEFAULT_OUTPUT_FODLER[] = ".";
 int DEFAULT_TIME_INTERVAL = 1;
+int DEFAULT_CAMERA = 0;
 
 using namespace cv;
 void writeOutputImage(Mat& image, char *folder, int fileNumber) {
@@ -19,18 +20,20 @@ int main( int argc, char** argv )
 
     char *outputFolder = DEFAULT_OUTPUT_FODLER;
     int timeInterval = DEFAULT_TIME_INTERVAL;
+    int cameraId = DEFAULT_CAMERA;
     int currentFileCount = 1;
-    int outputVideoFps = 24;
-    Mat frame;
     bool writeVideo = false;
+    int outputVideoFps = 24;
 
-    printf("Usage: <[image]|video> <outputFolder[\".\"]> <timeInterval[1]>\nRunning with defaults...\n");
+    printf("Usage: <[image]|video> <outputFolder[\".\"]> <timeInterval[1]> <camera[0]>\nRunning with defaults...\n");
 
     if(argc>1) writeVideo = strcmp(argv[1],"video")==0;
     if(argc>2) outputFolder = argv[2];
     if(argc>3) sscanf(argv[3], "%d", &timeInterval);
+    if(argc>4) sscanf(argv[4], "%d", &cameraId);
 
 
+    Mat frame;
     //open input
     VideoCapture cap(0); // open the default camera
     if(!cap.isOpened())  // check if we succeeded
