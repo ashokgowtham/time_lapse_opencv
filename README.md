@@ -30,3 +30,17 @@ Compiling yourself:
 Simply clone the repository run the `build.sh` script file.
 
 You will need opencv library setup in your machine.
+
+Setting up opencv:
+------------------
+
+if you are using OSX, then simply do the following:
+
+```
+brew update
+
+brew install cmake
+
+brew tap homebrew/science
+brew install opencv
+```
